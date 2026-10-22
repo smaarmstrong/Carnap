@@ -1,5 +1,10 @@
 # Carnap
 
+> **This fork** adds [`quickstart/`](quickstart/): one script that runs
+> Carnap on your own computer from the prebuilt image, with Google sign-in
+> and a command to make yourself instructor. See
+> [quickstart/README.md](quickstart/README.md).
+
 Carnap is a free and open-source Haskell framework for creating and exploring
 formal languages, logics, and semantics. It lets you quickly and
 straightforwardly define languages, construct logics for those languages, and
