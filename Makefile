@@ -1,4 +1,5 @@
-.PHONY: help devel run shell-ghc build-ghc shell-ghcjs build-ghcjs tags build-production hoogle
+.PHONY: help devel run shell-ghc build-ghc shell-ghcjs build-ghcjs tags build-production hoogle \
+	setup up down status logs update admin autostart
 TARGET := all
 
 CABALFLAGS := -f dev
@@ -20,7 +21,29 @@ help:
 	@echo "    tags                Generate source code tags for development"
 	@echo "    hoogle              Starts a hoogle server with Carnap-Server's dependencies"
 	@echo ""
+	@echo "Run the prebuilt image locally (podman or docker, see quickstart/README.md):"
+	@echo "    setup               First run: write quickstart/.env and start Carnap"
+	@echo "    up / down / status  Start, stop, inspect"
+	@echo "    logs [N=50]         Last N lines from Carnap"
+	@echo "    update              Fetch the newest image and restart"
+	@echo "    admin EMAIL=...     Make a signed-in user admin and instructor"
+	@echo "    autostart ON=yes|no Start Carnap at login"
+	@echo ""
 	@echo "For more usage instructions, see README."
+
+QUICKSTART := ./quickstart/carnap.sh
+
+setup up down status update:
+	$(QUICKSTART) $@
+
+logs:
+	$(QUICKSTART) logs $(N)
+
+admin:
+	$(QUICKSTART) admin $(EMAIL)
+
+autostart:
+	$(QUICKSTART) autostart $(if $(filter yes on,$(ON)),on,off)
 
 
 build-production:
