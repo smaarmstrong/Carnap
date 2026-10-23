@@ -40,6 +40,10 @@ Then make yourself admin and instructor:
 
 ## Everyday commands
 
+From the project root you can also use `make`: `make up`, `make down`,
+`make status`, `make logs N=200`, `make update`, `make admin EMAIL=you@gmail.com`,
+`make autostart ON=yes`. `make help` lists them.
+
 | Command | What it does |
 | --- | --- |
 | `./carnap.sh up` | Start Carnap, or restart it after editing `.env` |
